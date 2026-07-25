@@ -47,7 +47,7 @@ describe("profile preview", () => {
 
       expect(container.childElementCount).toBe(1);
       expect(container.children[0]).toHaveTextContent(
-        "Profile preview unavailable"
+        "Profile preview unavailable",
       );
     });
 
@@ -66,12 +66,12 @@ describe("profile preview", () => {
 
       expect(container.childElementCount).toBe(1);
       expect(container.children[0]).toHaveTextContent(
-        "Profile preview unavailable"
+        "Profile preview unavailable",
       );
     });
   });
 
-  describe.skip("short form option", () => {
+  describe("short form option", () => {
     test("contains profile info except the bio with shortform on", () => {
       const profile = {
         pictureSrc: "/picture",
