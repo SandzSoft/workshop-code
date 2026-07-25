@@ -1,5 +1,16 @@
-export function ProfilePreview(profile) {
+export function ProfilePreview(profile, options = {}) {
   const preview = document.createElement("aside");
+
+  const { available = true, shortForm = false } = options;
+
+  if (!available) {
+    const message = document.createElement("p");
+    message.textContent = "Profile preview unavailable";
+
+    preview.appendChild(message);
+
+    return preview;
+  }
 
   const picture = document.createElement("img");
   picture.src = profile.pictureSrc;
@@ -10,13 +21,16 @@ export function ProfilePreview(profile) {
   name.textContent = profile.name;
   name.dataset.testid = "profileName";
 
-  const bio = document.createElement("p");
-  bio.textContent = profile.bio;
-  bio.dataset.testid = "profileBio";
-
   preview.appendChild(picture);
   preview.appendChild(name);
-  preview.appendChild(bio);
+
+  if (!shortForm) {
+    const bio = document.createElement("p");
+    bio.textContent = profile.bio;
+    bio.dataset.testid = "profileBio";
+
+    preview.appendChild(bio);
+  }
 
   return preview;
 }
